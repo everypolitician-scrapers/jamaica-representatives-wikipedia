@@ -27,7 +27,7 @@ def ocd_idify(text)
   text.downcase.tr(' ','_')
 end
 
-def scrape_list(url)
+def scrape_list(term, url)
   noko = noko_for(url)
 
   current_parish = ''
@@ -47,7 +47,7 @@ def scrape_list(url)
       parish: current_parish,
       area: constituency,
       area_id: area_id,
-      term: 2011,
+      term: term,
       source: url,
     }
     ScraperWiki.save_sqlite([:name, :party, :term], data)
@@ -55,4 +55,5 @@ def scrape_list(url)
 
 end
 
-scrape_list('https://en.wikipedia.org/wiki/Constituencies_of_Jamaica')
+scrape_list(2011, 'https://en.wikipedia.org/w/index.php?title=Constituencies_of_Jamaica&oldid=707616860')
+scrape_list(2016, 'https://en.wikipedia.org/wiki/Constituencies_of_Jamaica')
