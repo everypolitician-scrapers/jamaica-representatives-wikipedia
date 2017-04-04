@@ -51,4 +51,6 @@ end
 
 ScraperWiki.sqliteexecute('DROP TABLE data') rescue nil
 scrape_list(2011, 'https://en.wikipedia.org/w/index.php?title=Constituencies_of_Jamaica&oldid=707616860')
+scrape_list(2016, 'https://en.wikipedia.org/w/index.php?title=Constituencies_of_Jamaica&direction=prev&oldid=734761830')
 scrape_list(2016, 'https://en.wikipedia.org/wiki/Constituencies_of_Jamaica')
+
