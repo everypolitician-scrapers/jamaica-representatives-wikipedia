@@ -26,7 +26,7 @@ def scrape_list(term, url)
   noko = noko_for(url)
 
   current_parish = ''
-  noko.xpath('//h2[contains(span,"Constituencies and MPs")]/following-sibling::table[1]/tr[td]').each do |tr|
+  noko.xpath('//h2[contains(span,"Constituencies and MPs")]/following-sibling::table[1]//tr[td]').each do |tr|
     tds = tr.css('td')
 
     unless (parish = tds[0].css('a').text).empty?
