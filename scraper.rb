@@ -50,7 +50,7 @@ end
 
 data_2011 = scrape_list(2011, 'https://en.wikipedia.org/w/index.php?title=Constituencies_of_Jamaica&oldid=707616860')
 data_2016 = scrape_list(2016, 'https://en.wikipedia.org/wiki/Constituencies_of_Jamaica')
-data = data_2011 + data_2016
+data = (data_2011 + data_2016).reject { |r| r[:name].include? 'Vacant' }
 data.each { |mem| puts mem.reject { |_, v| v.to_s.empty? }.sort_by { |k, _| k }.to_h } if ENV['MORPH_DEBUG']
 
 ScraperWiki.sqliteexecute('DROP TABLE data') rescue nil
